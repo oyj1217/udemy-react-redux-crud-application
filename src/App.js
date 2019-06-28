@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// class App extends Component
-// {
-//   render()
-//   {
-//     const greeting = "HI!Tom";
-//     const dom = <h1 className="foo">{greeting}</h1>
-//     return dom;
-//   }
-// }
+
 
 const App = () =>
 {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 20 },
+    { name: "Noname"},
+  ]
+
   return (
     <React.Fragment>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {profiles.map((profile,index) =>
+      {
+        return <User name={profile.name} age={profile.age} key={index}/>
+      }
+      )}
     </React.Fragment>
   )
 }
 
-const Cat = () =>
+const User = (props) =>
 {
-  return <div>mei</div>
+  return <div>HI,i am {props.name} and {props.age} years old!</div>
+}
+
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
